@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Clientes</title>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+        <a href="/movimentacao/nova">Nova Movimentação</a>
+
+<h1>Clientes cadastrados</h1>
+ 
+    <a href="/cliente/novo">
+<button>➕ Adicionar Cliente</button>
+</a>
+ 
+    <table border="1">
+<tr>
+<th>ID</th>
+<th>Nome</th>
+<th>CPF</th>
+<th>Ações</th>
+</tr>
+<tr th:each="cliente : ${cliente}">
+<td th:text="${cliente.id}"></td>
+<td th:text="${cliente.nome}"></td>
+<td th:text="${cliente.cpf}"></td>
+<td>
+<a th:href="@{|/cliente/editar/${cliente.id}|}">
+<button>✏️ Editar</button>
+</a>
+<a th:href="@{|/cliente/deletar/${cliente.id}|}" 
+
+                   onclick="return confirm('Tem certeza que deseja excluir?')">
+<button>🗑️ Excluir</button>
+</a>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+ 
